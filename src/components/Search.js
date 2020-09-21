@@ -3,7 +3,20 @@ import React, { useState, useEffect } from "react";
 
 const Search = () => {
   const [term, setTerm] = useState("programers");
+  const [debouncedTerm, setDebouncedTerm] = useState(term);
   const [results, setResults] = useState([]);
+
+  //This useEffect is used to set the timout for the search string...if the string is same then 
+  //Unessarry call would be avoided.
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedTerm(term);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [term]);
 
   useEffect(() => {
     const search = async () => {
@@ -13,26 +26,13 @@ const Search = () => {
           list: "search",
           origin: "*",
           format: "json",
-          srsearch: term,
+          srsearch: debouncedTerm,
         },
       });
       setResults(data.query.search);
     };
-
-    if (term && !results.length) {
-      search();
-    } else {
-      const timeoutId = setTimeout(() => {
-        if (term) {
-          search();
-        }
-      }, 1000);
-
-      return () => {
-        clearInterval(timeoutId);
-      };
-    }
-  }, [term]);
+    search();
+  }, [debouncedTerm]);
 
   const renderedResults = results.map((result) => {
     return (
