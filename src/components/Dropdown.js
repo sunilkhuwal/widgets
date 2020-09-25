@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Dropdown = ({ options, selected, onClickSelectedOption }) => {
-  const [open, setOpen] = useState(false);
-  const renderedOptions = options.map((option) => {
+const [open, setOpen] = useState(false);
+
+useEffect(() => {
+  document.body.addEventListener('click', () => {
+    console.log('ItemClicked');
+    setOpen(false);
+  })
+}, []);
+
+
+const renderedOptions = options.map((option) => {
     if (option.value === selected.value) return null;
     return (
       <div
