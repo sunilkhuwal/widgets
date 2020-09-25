@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Accordion from "./components/accordion";
 import Search from "./components/Search";
 import Dropdown from "./components/Dropdown";
+import Translate from "./components/Translate";
 
 const items = [
   {
@@ -32,32 +33,42 @@ const options = [
     label: "This is black",
     value: "black",
   },
+  {
+    label: "This is Pink",
+    value: "pink",
+  },
+  {
+    label: "This is Brown",
+    value: "brown",
+  },
 ];
 
 const App = () => {
-  const [selected, setSelected] = useState(options[0]);
-  const [showDropdown, setShowDropdown] = useState(true);
-  // return <Accordion  items={items}/>;
-  // return <Search />;
-  return (
-    <div>
-      <button
-        onClick={() => {
-          console.log("clickinghere");
-          setShowDropdown(!showDropdown);
-        }}
-      >
-        Toggle dropdown!!!!!
-      </button>
-      {showDropdown ? (
-        <Dropdown
-          selected={selected}
-          onClickSelectedOption={setSelected}
-          options={options}
-        />
-      ) : null}
-    </div>
-  );
+  return <Translate />;
+
+  // const [selected, setSelected] = useState(options[0]);
+  // const [showDropdown, setShowDropdown] = useState(true);
+  // // return <Accordion  items={items}/>;
+  // // return <Search />;
+  // return (
+  //   <div>
+  //     <button
+  //       onClick={() => {
+  //         console.log("clickinghere");
+  //         setShowDropdown(!showDropdown);
+  //       }}
+  //     >
+  //       Toggle dropdown!!!!!
+  //     </button>
+  //     {showDropdown ? (
+  //       <Dropdown
+  //         selected={selected}
+  //         onClickSelectedOption={setSelected}
+  //         options={options}
+  //       />
+  //     ) : null}
+  //   </div>
+  // );
 };
 
 export default App;
