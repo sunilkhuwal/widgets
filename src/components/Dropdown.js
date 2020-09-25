@@ -53,7 +53,9 @@ const Dropdown = ({ options, selected, onClickSelectedOption }) => {
             </div>
           </div>
         </div>
-      <div style={{height:50, width: 50, background: `${selected.value}`}}>{selected.value}</div>
+        <div style={{ height: 50, width: 50, background: `${selected.value}` }}>
+          {selected.value}
+        </div>
       </div>
     </div>
   );
