@@ -9,8 +9,8 @@ const Translate = () => {
   const [text, setText] = useState("");
 
   return (
-    <div>
-      <div className="form">
+    <div className="ui container">
+      <div className="ui form">
         <div className="field">
           <label className="label">Enter the text for language</label>
           <input value={text} onChange={(e) => setText(e.target.value)} />
